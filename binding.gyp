@@ -60,7 +60,7 @@
       'sources+': [
         'src/common/v8synchronizationcontext.cpp',
         'src/common/callbackhelper.cpp',
-        'src/common/edge.cpp',
+        'src/common/edge.cpp',		
         'src/CoreCLREmbedding/coreclrembedding.cpp',
         'src/CoreCLREmbedding/coreclrfunc.cpp',
         'src/CoreCLREmbedding/coreclrnodejsfunc.cpp',
@@ -92,6 +92,7 @@
           {
             'sources+': [
               'src/CoreCLREmbedding/pal/pal.windows.cpp',
+			  'src/common/win_delay_load_hook.cc'
             ]
           },
           {
@@ -122,7 +123,8 @@
             'VCLinkerTool': {
               'AdditionalOptions': [
                 '/ignore:4248',
-                'shlwapi.lib'
+                'shlwapi.lib',
+				'/ignore:4199',
               ]
             }
           }
@@ -147,7 +149,8 @@
             'VCLinkerTool': {
               'AdditionalOptions': [
                 '/ignore:4248',
-                'shlwapi.lib'
+                'shlwapi.lib',
+				'/ignore:4199',
               ]
             }
           }
@@ -183,7 +186,8 @@
               'src/dotnet/clractioncontext.cpp',
               'src/common/v8synchronizationcontext.cpp',
               'src/common/callbackhelper.cpp',
-              'src/common/edge.cpp'
+              'src/common/edge.cpp',
+			  'src/common/win_delay_load_hook.cc'
             ]
           },
           {
@@ -242,8 +246,10 @@
             },
             'VCLinkerTool': {
               'AdditionalOptions': [
-                '/ignore:4248'
-              ]
+                '/ignore:4248',
+				'/ignore:4199',
+              ],
+			  'DelayLoadDLLs': 'iojs.exe;node.exe;'
             }
           }
         },
@@ -264,8 +270,10 @@
             },
             'VCLinkerTool': {
               'AdditionalOptions': [
-                '/ignore:4248'
-              ]
+                '/ignore:4248',
+				'/ignore:4199',
+              ],
+			  'DelayLoadDLLs': 'iojs.exe;node.exe;'
             }
           }
         }
